@@ -1,6 +1,7 @@
 import blank_profile from "../assets/blank_profile.png";
+import ISkill from "../interfaces/ISkill";
 import IWilderProps from "../interfaces/IWilderProps";
-// import Skill from "./Skill";
+import Skill from "./Skill";
 
 const Wilder = ({ wilderInfos, onDeleteButtonClicked }: IWilderProps) => (
   <article className="card">
@@ -14,13 +15,14 @@ const Wilder = ({ wilderInfos, onDeleteButtonClicked }: IWilderProps) => (
     </p>
     <h4>Wild Skills</h4>
     <ul className="skills">
-      {/* {wilderInfos.skills?.map((skill) => (
+      {wilderInfos.skills?.map((skill: ISkill) => (
         <Skill
-          key={skill.title}
-          skillName={skill.name}
-          skillRating={skill.votes}
+          key={skill.id}
+          id={skill.id}
+          name={skill.name}
+          rating={skill.rating}
         />
-      ))} */}
+      ))}
     </ul>
     <button onClick={onDeleteButtonClicked}>Supprimer</button>
   </article>

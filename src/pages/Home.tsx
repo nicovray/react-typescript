@@ -3,7 +3,6 @@ import axios from "axios";
 import Wilder from "../components/Wilder";
 import IWilder from "../interfaces/IWilder";
 import WilderForm from "../components/WilderForm";
-// import WilderForm from "../components/WilderForm";
 
 const Home = () => {
   const [wilders, setWilders] = useState<IWilder[]>([]);
@@ -20,10 +19,10 @@ const Home = () => {
     fetchWilders();
   }, []);
 
-  //   const deleteWilder = async (wilder) => {
-  //     await axios.delete(`http://localhost:5001/api/wilders/${wilder.id}`);
-  //     setWilders(wilders.filter((w) => w.id !== wilder.id));
-  //   };
+  const deleteWilder = async (wilder: IWilder) => {
+    await axios.delete(`http://localhost:5001/api/wilders/${wilder.id}`);
+    setWilders(wilders.filter((w) => w.id !== wilder.id));
+  };
 
   const save = async (name: string) => {
     const response = await axios.post("http://localhost:5001/api/wilders", {
@@ -50,7 +49,7 @@ const Home = () => {
               key={wilder.id}
               wilderInfos={wilder}
               onDeleteButtonClicked={() => {
-                // deleteWilder(wilder);
+                deleteWilder(wilder);
               }}
             />
           ))}
